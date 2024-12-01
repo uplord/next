@@ -6,10 +6,12 @@ import Svg from '@/components/Svg';
 export default function Toggle() {
   const { theme, setTheme } = useTheme();
   const [ themeStyles, setThemeStyles ] = useState('');
+  const [ animate, setAnimate ] = useState(false);
 
   useEffect(() => {
     if (theme) {
       setThemeStyles(styles[theme] || '');
+      setAnimate(true);
     }
   }, [theme]);
 
@@ -32,7 +34,7 @@ export default function Toggle() {
 
   return (
     <div
-      className={`${styles.toggle} ${themeStyles}`}
+      className={`${styles.toggle} ${animate ? styles.animate : ''} ${themeStyles}`}
       onClick={toggleTheme}
       suppressHydrationWarning
     >

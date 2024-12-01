@@ -5,6 +5,14 @@
   width: 76px;
   cursor: pointer;
 
+  &.animate {
+    span, 
+    span:after, 
+    svg {
+      transition: all 0.3s;
+    }
+  }
+
   &.light {
     span:after {
       background: var(--sun-color);
@@ -47,7 +55,6 @@
     width: 100%;
     background: var(--navigation-color);
     border-radius: 20px;
-    transition: all 0.3s;
 
     &:after {
       content: '';
@@ -58,7 +65,6 @@
       width: 32px;
       border-radius: 16px;
       z-index: 1;
-      transition: all 0.3s;
     }
   }
 
@@ -70,6 +76,5 @@
     color: #fff;
     z-index: 1;
     opacity: 0;
-    transition: all 0.3s;
   }
 }
