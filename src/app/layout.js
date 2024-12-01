@@ -1,22 +1,18 @@
-'use client';
-
 import "@/styles/style.scss";
-import { useEffect, useState } from "react";
-// import { getDarkMode } from '@/utils/getDarkMode';
+import { ThemeProvider } from "@/components/ThemeProvider"
 
-export default function RootLayout({ children }) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isDarkMode = mounted && localStorage.getItem('color-mode') === 'dark';
-
+export default async function RootLayout({ children }) {
   return (
-    <html lang="en" className={isDarkMode ? "dark" : ""}>
+    <html lang="en" suppressHydrationWarning>
       <body>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
