@@ -1,0 +1,13 @@
+@use './normalize' as *;
+@use './globals' as *;
+@use './utilities' as *;
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+}

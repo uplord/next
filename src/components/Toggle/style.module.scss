@@ -1,0 +1,80 @@
+.toggle {
+  position: relative;
+  margin: 1.1875rem 0;
+  display: flex;
+  width: 76px;
+  cursor: pointer;
+
+  &.animate {
+    span, 
+    span:after, 
+    svg {
+      transition: all 0.3s;
+    }
+  }
+
+  &.light {
+    span:after {
+      background: var(--sun-color);
+      left: 40px;
+    }
+
+    .sun {
+      opacity: 1;
+    }
+
+    .moon {
+      opacity: 0;
+    }
+  }
+
+  &.dark {
+    span:after {
+      background: var(--moon-color);
+      left: 4px;
+    }
+
+    svg {
+      transform: translateY(-50%) rotate(0deg);
+      left: 10px;
+
+      &.sun {
+        opacity: 0;
+      }
+
+      &.moon {
+        opacity: 1;
+      }
+    }
+  }
+
+  span {
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 100%;
+    background: var(--navigation-color);
+    border-radius: 20px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      height: 32px;
+      width: 32px;
+      border-radius: 16px;
+      z-index: 1;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 46px;
+    transform: translateY(-50%) rotate(180deg);
+    color: #fff;
+    z-index: 1;
+    opacity: 0;
+  }
+}
