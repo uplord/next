@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTheme } from "next-themes";
+import { useTheme } from 'next-themes';
 import styles from './style.module.scss';
 import Svg from '@/components/Svg';
 

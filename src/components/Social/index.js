@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link'
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 import Svg from '@/components/Svg';
 
 export default function Social() {
