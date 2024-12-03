@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './style.module.scss';
 import Buttons from '@/components/Button/Buttons';
 
-export default function Banner({ id }) {
+export default function Banner() {
   const buttons = [{
     title: 'Get in touch',
     link: 'mailto:michael@uplord.co.uk',
