@@ -21,7 +21,7 @@ export default function Banner({ id }) {
           <div className={styles.image}>
             <Image
               src="/images/me.jpeg"
-              alt="Hi, I'm Michael"
+              alt="Hi, I&apos;m Michael"
               quality={80}
               width={748}
               height={748}
@@ -29,7 +29,7 @@ export default function Banner({ id }) {
             />
           </div>
           <div className={styles.text}>
-            <h1><span>Hi, I'm Michael</span> A Front End Developer</h1>
+            <h1><span>Hi, I&apos;m Michael</span> A Front End Developer</h1>
             <h2>With 9 years in the industry creating websites</h2>
             <Buttons data={buttons} className={styles.buttons} />
           </div>

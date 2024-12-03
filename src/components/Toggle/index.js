@@ -7,9 +7,17 @@ export default function Toggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [themeStyles, setThemeStyles] = useState('');
 
+  const updateFavicon = (currentTheme) => {
+    const favicon = document.querySelector("link[rel='icon']");
+    if (favicon) {
+      favicon.href = currentTheme === 'dark' ? '/favicon-dark.svg' : '/favicon.svg';
+    }
+  };
+
   useEffect(() => {
     if (resolvedTheme) {
       setThemeStyles(styles[resolvedTheme] || '');
+      updateFavicon(resolvedTheme);
     }
   }, [resolvedTheme]);
 
@@ -17,9 +25,7 @@ export default function Toggle() {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e) => {
       const newTheme = e.matches ? 'dark' : 'light';
-      if (theme === 'system') {
-        setTheme(newTheme);
-      }
+      setTheme(newTheme);
     };
 
     if (theme === 'system') {
@@ -33,7 +39,9 @@ export default function Toggle() {
   }, [theme, setTheme]);
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    updateFavicon(newTheme);
   };
 
   return (
