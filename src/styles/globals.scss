@@ -15,7 +15,7 @@
   --secondary-color-hover: #aaa;
   --secondary-color-text: #121110;
 
-  --background-color: #fff;
+  --bg-color: #fff;
   --heading-color: #000;
   --text-color: #333;
   --border-color: #ddd;
@@ -38,7 +38,7 @@
   --max-width: 1432px;
 
   &.dark {
-    --background-color: #0d0d0d;
+    --bg-color: #0d0d0d;
     --heading-color: #fff;
     --text-color: #bdc1c6;
     --border-color: #2b2b2b;

@@ -4,29 +4,33 @@ import styles from './style.module.scss';
 import Svg from '@/components/Svg';
 
 export default function Toggle() {
-  const { theme, setTheme } = useTheme();
-  const [ themeStyles, setThemeStyles ] = useState('');
-  const [ animate, setAnimate ] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [themeStyles, setThemeStyles] = useState('');
 
   useEffect(() => {
-    if (theme) {
-      setThemeStyles(styles[theme] || '');
-      setAnimate(true);
+    if (resolvedTheme) {
+      setThemeStyles(styles[resolvedTheme] || '');
     }
-  }, [theme]);
+  }, [resolvedTheme]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e) => {
       const newTheme = e.matches ? 'dark' : 'light';
-      setTheme(newTheme);
+      if (theme === 'system') {
+        setTheme(newTheme);
+      }
     };
+
+    if (theme === 'system') {
+      setTheme(mediaQuery.matches ? 'dark' : 'light');
+    }
 
     mediaQuery.addEventListener('change', handleChange);
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
     };
-  }, []);
+  }, [theme, setTheme]);
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -34,7 +38,7 @@ export default function Toggle() {
 
   return (
     <div
-      className={`${styles.toggle} ${animate ? styles.animate : ''} ${themeStyles}`}
+      className={`${styles.toggle} ${themeStyles}`}
       onClick={toggleTheme}
       suppressHydrationWarning
     >
